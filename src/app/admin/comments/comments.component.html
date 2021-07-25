@@ -1,0 +1,40 @@
+<div class="body">
+    <div id="wrapper">
+        <!-- Navigation -->
+        <app-nav></app-nav>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Welcome to admin
+                        </h1>
+                        <table>
+                            <thead>
+                                <th>
+                                    id
+                                </th>
+                                <th>
+                                    Author
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let comment of Comment$ | async">
+                                    <td>
+                                        {{comment.id}}
+                                    </td>
+                                    <td>
+                                        {{comment.comment_author}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+    </div>
+</div>

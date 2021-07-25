@@ -1,0 +1,6 @@
+.side-nav {
+  top: 66px;
+}
+.navbar-collapse {
+  max-height: 395px !important;
+}

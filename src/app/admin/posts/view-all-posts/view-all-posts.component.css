@@ -1,0 +1,20 @@
+.table {
+  table-layout: fixed;
+  width: 100%;
+  word-wrap: break-word;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.post_description{
+  overflow: auto; 
+  overflow-x: hidden;
+  width: 100%;
+  border: 1px solid lightgray;
+  height: 65px;
+}
+@media (max-width:768px) {
+  .mobile_size > .col-md-4{
+    margin: 12px;
+  }
+}

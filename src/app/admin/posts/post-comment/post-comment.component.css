@@ -1,0 +1,35 @@
+.table {
+  table-layout: fixed;
+  width: 100%;
+  word-wrap: break-word;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+.mat-slide-toggle {
+  display: inline-block;
+  height: 24px;
+  max-width: 100%;
+  line-height: 24px;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  outline: 0;
+}
+
+.post_comment_description{
+  overflow: auto; 
+  overflow-x: hidden;
+  width: 100%;
+  border: 1px solid lightgray;
+  height: 65px;
+}
+
+@media (max-width:768px) {
+  .mobile_size > .col-md-4{
+    margin: 12px;
+  }
+}

@@ -1,0 +1,240 @@
+<div class="body">
+    <div id="wrapper">
+        <!-- Navigation -->
+        <app-nav></app-nav>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div *ngIf="HiddenUpdate" class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <strong>Well done!</strong> You Successfully Update This Post
+                </div>
+                <div *ngIf="HiddenUpdate==false" class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <strong>Attention!</strong> Your Post Is Not Updated
+                </div>
+                <div *ngIf="Hidden" class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <strong>Well done!</strong> You Successfully Add This Post
+                </div>
+                <div *ngIf="Hidden==false" class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <strong>Attention!</strong> Your Post Is Not Add
+                </div>
+                <mat-toolbar>
+                    <h2>{{postButton}} Post</h2>
+                </mat-toolbar>
+                <form [formGroup]="addpost" (ngSubmit)="AddPost(addpost,formD)" #formD="ngForm">
+                    <!-- PostTitle: -->
+                    <mat-form-field style="display: block;" class="example-full-width"><span
+                            style="color: red; float: right; margin-bottom: -25px;">*</span>
+                        <input matInput placeholder="Post Title" formControlName="post_title"
+                            [(ngModel)]="post.post_title">
+                        <mat-error>
+                            <span *ngIf="addpost.get('post_title').invalid && addpost.get('post_title').touched">Must
+                                Fill</span>
+                        </mat-error>
+                    </mat-form-field>
+                    <!-- Post Actual Price: -->
+                    <div class="actual_special_category_discount">
+                        <mat-form-field class="actual_special_category_discount_fields">
+                            <span style="color: red; float: right; margin-bottom: -25px;">*</span>
+                            <input matInput type="number" placeholder="Actual Price" formControlName="post_actual_price"
+                                [(ngModel)]="post.post_actual_price">
+                            <mat-error>
+                                <span
+                                    *ngIf="addpost.get('post_actual_price').invalid && addpost.get('post_actual_price').touched">Must
+                                    Fill</span>
+                            </mat-error>
+                        </mat-form-field>
+                        <!-- PostTag: -->
+                        <mat-form-field class="actual_special_category_discount_fields">
+                            <!-- <span
+                            style="color: red; float: right; margin-bottom: -25px;">*</span> -->
+                            <input matInput type="number" placeholder="Post Special Price"
+                                formControlName="post_special_price" [(ngModel)]="post.post_special_price">
+                            <!-- <mat-error>
+                                    <span
+                                        *ngIf="addpost.get('post_special_price').invalid && addpost.get('post_special_price').touched">Must
+                                        Fill</span>
+                                </mat-error> -->
+                        </mat-form-field>
+                        <!-- Choose one: -->
+                        <mat-form-field class="actual_special_category_discount_fields">
+                            <span style="color: red; float: right; margin-bottom: -17px;">*</span>
+                            <mat-select placeholder="Post Category" formControlName="post_category"
+                                [(ngModel)]="post.post_category">
+                                <mat-option *ngFor="let c of categories$ | async" [value]="c.name">
+                                    {{c.name}}
+                                </mat-option>
+                            </mat-select>
+                            <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                            <mat-error>
+                                <span
+                                    *ngIf="addpost.get('post_category').invalid && addpost.get('post_category').touched">Must
+                                    Fill</span>
+                            </mat-error>
+                        </mat-form-field>
+                        <!-- Phone Number 
+                                <mat-form-field class="actual_special_category_discount_fields"><span
+                                    style="color: red; float: right; margin-bottom: -25px;">*</span>
+                                <input matInput placeholder="Phone #" formControlName="post_phone_num"
+                                    [(ngModel)]="post.post_phone_num">
+                                <mat-error>
+                                    <span
+                                        *ngIf="addpost.get('post_phone_num').invalid && addpost.get('post_phone_num').touched">Must
+                                        Fill</span>
+                                </mat-error>
+                            </mat-form-field> -->
+                        <mat-form-field class="actual_special_category_discount_fields">
+                            <!-- <span style="color: red; float: right; margin-bottom: -25px;">*</span> -->
+                            <input matInput placeholder="Discount %" formControlName="post_discount"
+                                [(ngModel)]="post.post_discount">
+                            <mat-error>
+                                <!-- <span
+                                *ngIf="addpost.get('post_discount').invalid && addpost.get('post_discount').touched">Must
+                                Fill</span> -->
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <!--CNIC
+                                 <mat-form-field class="example-full-width">
+                                <input matInput placeholder="CNIC" formControlName="post_cnic"
+                                    [(ngModel)]="post.post_cnic">
+                            <mat-error>
+                            <span *ngIf="addpost.get('post_cnic').invalid && addpost.get('post_cnic').touched">Must Fill</span>
+                            </mat-error>
+                            </mat-form-field> -->
+                    <div style="display: block; margin: 15px">
+                        <button mat-fab style="width: 75px" type="button" (click)="image1.click()">Image 1
+                            <span *ngIf="!isLoadingImage1" style="color: black; font-size: 24px">*</span>
+                            <span *ngIf="isLoadingImage1" class="fa fa-spinner fa-spin" style="font-size:20px"></span>
+                        </button>
+                        <input style="display: none" #image1 type="file" placeholder="Image"
+                            (change)="imageOne($event, 'file' )" required>
+                        <div style="display: none">
+                            <input type="url" formControlName="image1" [(ngModel)]="downloadUrl1 || post.image1">
+                        </div>
+                        <button mat-fab style="width: 75px" type="button" (click)="image2.click()">Image 2
+                            <span *ngIf="!isLoadingImage2" style="color: black; font-size: 24px">*</span>
+                            <span *ngIf="isLoadingImage2" class="fa fa-spinner fa-spin" style="font-size:20px"></span>
+                        </button>
+
+                        <input style="display: none" #image2 type="file" placeholder="Image"
+                            (change)="imageTwo($event, 'file' )" required>
+                        <div style="display: none">
+                            <input type="url" formControlName="image2" [(ngModel)]="downloadUrl2 || post.image2">
+                        </div>
+                        <button mat-fab style="width: 75px" type="button" (click)="image3.click()">Image 3
+                            <span *ngIf="!isLoadingImage3" style="color: black; font-size: 24px">*</span>
+                            <span *ngIf="isLoadingImage3" class="fa fa-spinner fa-spin" style="font-size:20px"></span>
+                        </button>
+
+                        <input style="display: none" #image3 type="file" placeholder="Image"
+                            (change)="imageThree($event, 'file' )" required>
+                        <div style="display: none">
+                            <input type="url" formControlName="image3" [(ngModel)]="downloadUrl3 || post.image3">
+                        </div>
+                        <!-- <button mat-fab style="width: 75px" type="button" (click)="image3.click()">Image 3</button>  
+                                <input style="display: none" #image3 type="file" placeholder="Image" (change)="fun($event, 'file' )" required >
+                                <div style="display: none">
+                                <input type="url" formControlName="image3" [ngModel]="downloadUrl4" > 
+                                </div> -->
+                        <button mat-fab style="width: 75px" type="button" (click)="image4.click()">Image 4
+                            <span *ngIf="!isLoadingImage4" style="color: black; font-size: 24px">*</span>
+                            <span *ngIf="isLoadingImage4" class="fa fa-spinner fa-spin" style="font-size:20px"></span>
+                        </button>
+                        <input style="display: none" #image4 type="file" placeholder="Image"
+                            (change)="imageFour($event, 'file' )" required>
+                        <div style="display: none">
+                            <input type="url" formControlName="image4" [(ngModel)]="downloadUrl4 || post.image4">
+                        </div>
+                        <!-- <button mat-fab style="width: 75px" type="button" (click)="image5.click()">Image 5 
+                                    <span style="color: black; font-size: 24px">*</span>
+                                </button>
+                                <input style="display: none" #image5 type="file" placeholder="Image"
+                                    (change)="fun5($event, 'file' )" required>
+                                <div style="display: none">
+                                    <input type="url" formControlName="image5"
+                                        [(ngModel)]="downloadUrl5 || post.image5">
+                                </div> -->
+                        <!-- <button mat-fab style="width: 75px" type="button" (click)="image6.click()">Image 6 
+                                    <span style="color: black; font-size: 24px">*</span>
+                                    </button>
+                                <input style="display: none" #image6 type="file" placeholder="Image"
+                                    (change)="fun6($event, 'file' )" required>
+                                <div style="display: none">
+                                    <input type="url" formControlName="image6"
+                                        [(ngModel)]="downloadUrl6 || post.image6">
+                                </div> -->
+                    </div>
+                    <!--Address
+                                 <mat-form-field class="example-full-width"><span
+                                    style="color: red; float: right; margin-bottom: -25px;">*</span>
+                                <input matInput placeholder="Address" formControlName="post_address"
+                                    [(ngModel)]="post.post_address">
+                                <mat-error>
+                                    <span
+                                        *ngIf="addpost.get('post_address').invalid && addpost.get('post_address').touched">Must
+                                        Fill</span>
+                                </mat-error>
+                            </mat-form-field> -->
+                    <mat-form-field class="sku_date"><span
+                            style="color: red; float: right; margin-bottom: -25px;">*</span>
+                        <input matInput placeholder="SKU Number" formControlName="post_sku" [(ngModel)]="post.post_sku">
+                        <mat-error>
+                            <span *ngIf="addpost.get('post_sku').invalid && addpost.get('post_sku').touched">Must
+                                Fill</span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="sku_date">
+                        <span style="color: red; float: right; margin-bottom: -15px;">*</span>
+                        <input matInput type="date" placeholder="Choose a date" formControlName="picker"
+                            [(ngModel)]="post.picker">
+                        <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker> -->
+                        <mat-error>
+                            <span *ngIf="addpost.get('picker').invalid && addpost.get('picker').touched">Must
+                                Fill</span>
+                        </mat-error>
+                    </mat-form-field>
+                    <!--Email 
+                                <mat-form-field class="example-full-width">
+                                <input matInput type="email" placeholder="Email" formControlName="post_email"
+                                    [(ngModel)]="post.post_email">
+                            <mat-error>
+                            <span *ngIf="addpost.get('post_email').invalid && addpost.get('post_email').touched">Email required accurately</span>
+                            </mat-error>
+                            </mat-form-field> -->
+                    <div class="form-group" style="display: none">
+                        <label for="Author">Post_status</label>
+                        <input type="text" formControlName="post_status" class="form-control">
+                    </div>
+                    <div><span style="color: red; float: right; margin-bottom: -18px; 
+                         font-size: 25px; font-weight: 400;">*</span>
+                        <!-- <label for="post_content">Post Content:</label> -->
+                        <textarea class="form-control" formControlName="post_content" cols="30" rows="10"
+                            placeholder="Describe Your futher description here...," [(ngModel)]="post.post_content">
+                                </textarea>
+                    </div>
+                    <!-- <mat-form-field class="example-full-width"> -->
+                    <div class="post_buttons">
+                        <button style="margin-right: 20px;" mat-raised-button color="primary"
+                            [disabled]="addpost.invalid">{{postButton}} Post</button>
+                        <button mat-raised-button color="accent" type="reset">Reset</button>
+                    </div>
+                    <!-- </mat-form-field> -->
+                </form>
+                <!-- <div *ngIf="post.image">
+        <input type="url" name="image" [(ngModel)]="post.image">
+        </div> -->
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+</div>

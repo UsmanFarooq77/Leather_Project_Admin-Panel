@@ -1,0 +1,93 @@
+<div class="body">
+  <div id="wrapper">
+    <!-- Navigation -->
+    <app-nav></app-nav>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div class="container">
+          <div class="row">
+            <div class="mobile_size">
+              <div class="col-md-4">
+                <input #query type="text" placeholder=" Search by ID" (keyup)="filtered(query.value)">
+              </div>
+              <div class="col-md-4">
+                <input type="text" placeholder="Search" [(ngModel)]="searchText">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="Hidden" class="alert alert-info alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <strong>Well done!</strong>You Successfully Delete This Review
+        </div>
+        <div *ngIf="Hidden==false" class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <strong>Attention!</strong> Your Review Is Not Deleted
+        </div>
+        <div style="overflow-x:auto; margin-top: 13px;">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <!-- <th><input id="selectAllBoxes" type="checkbox"></th> -->
+                <th style="width: 140px;">Id</th>
+                <!-- <th>Users</th> -->
+                <th style="width: 130px;">Full Name</th>
+                <th style="width: 80px;">City</th>
+                <th style="width: 180px;">Address</th>
+                <th style="width: 128px;">Phone #</th>
+                <th style="width: 120px;">Date</th>
+                <th style="width: 70px;">Status</th>
+                <th style="width: 130px;">Image</th>
+
+                <th style="width: 300px;">Description</th>
+                <th style="width: 50px;">Edit</th>
+                <th style="width: 67px;">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let review of reviewsFiltered | reverse | filter : searchText
+            | paginate:{itemsPerPage:5, currentPage: pageNumber}; let i = index">
+                <td>{{review.$key}}</td>
+                <td>{{review.user_name}}</td>
+                <td>{{review.user_city}}</td>
+                <td>{{review.user_address}}</td>
+                <td>{{review.user_phone_num}}</td>
+                <td>{{review.date}}</td>
+                <td style="padding: 25px 15px">
+                  <mat-slide-toggle (change)="Approved(review.$key,$event)" checked="{{review.review_status}}">
+                  </mat-slide-toggle>
+                </td>
+                <td><img [src]="review.image1" max-width="100px" height="70px"></td>
+                <td><textarea class="user_description">{{review.user_content}}</textarea></td>
+                <!-- <td><a type="button" class="btn btn-danger" [routerLink]="['/add-review' , review.$key]">Edit</a>
+      </td> -->
+                <td style="padding: 25px 15px"><a [routerLink]="['/add-review' , review.$key]">
+                    <i style="color: green; cursor: pointer;" class="fa fa-pencil fa-2x" aria-hidden="true">
+                    </i></a>
+                </td>
+                <td style="text-align: center; padding-top: 29px;"> <i style="color: red; cursor: pointer"
+                    class="fa fa-trash fa-2x" (click)="deleteReview(review.$key)"></i>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <div class="col-12 text-center mb-4" *ngIf="isReviewsLoading">
+            <app-loader></app-loader>
+          </div>
+          <div class="col-md-12 text-center"
+            *ngIf="!isReviewsLoading && !reviewsFiltered.length || (!(reviewsFiltered | filter : searchText).length && !isReviewsLoading)">
+            <app-result-not-found></app-result-not-found>
+          </div>
+          <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!-- /#page-wrapper -->
+    </div>
+    <!-- /#page-wrapper -->
+  </div>
+</div>

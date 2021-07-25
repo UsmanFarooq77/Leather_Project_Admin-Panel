@@ -1,0 +1,70 @@
+/* .mat-form-field {
+  font-size: 19px;
+  font-weight: 400;
+  font-family: "Times New Roman", Times, serif;
+} */
+.post_buttons {
+  padding: 20px;
+  text-align: center;
+}
+.sku_date {
+  width: 580px;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  margin-bottom: 5px;
+}
+
+.actual_special_category_discount {
+  width: 100%;
+}
+
+@media (max-width: 599px) {
+  .mat-toolbar-row,
+  .mat-toolbar-single-row {
+    height: 56px;
+    margin-top: 12px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .actual_special_category_discount_fields {
+    width: 100% !important;
+  }
+  .sku_date {
+    width: 100%;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .actual_special_category_discount_fields {
+    width: 24.41% !important;
+  }
+  .sku_date {
+    width: 49.5%;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .actual_special_category_discount_fields {
+    width: 24.61% !important;
+  }
+  .sku_date {
+    width: 49.7%;
+  }
+}
+@media (min-width: 1440px) and (max-width: 2559px) {
+  .actual_special_category_discount_fields {
+    width: 24.75% !important;
+  }
+  .sku_date {
+    width: 49.8%;
+  }
+}
+@media (min-width: 2560px) {
+  .actual_special_category_discount_fields {
+    width: 24.87% !important;
+  }
+  .sku_date {
+    width: 49.9%;
+  }
+}

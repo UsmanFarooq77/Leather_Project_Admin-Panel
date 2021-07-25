@@ -1,0 +1,14 @@
+.table {
+  table-layout: fixed;
+  width: 100%;
+  word-wrap: break-word;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+.contact_message{
+  overflow: auto; 
+  overflow-x: hidden;
+  width: 100%;
+  border: 1px solid lightgray;
+  height: 65px;
+}

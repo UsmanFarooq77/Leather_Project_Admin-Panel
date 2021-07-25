@@ -1,0 +1,183 @@
+<div class="body">
+    <div id="wrapper">
+        <!-- Navigation -->
+        <app-nav></app-nav>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Welcome to Admin</h1>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-file-text fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <p style="font-size: 25px" *ngIf="!isLoading && posts.length >= 0">
+                                            {{ posts.length }}
+                                        </p>
+                                        <i *ngIf="isLoading" class="fa fa-spinner fa-spin" style="font-size:25px"></i>
+                                        <div>Posts</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a routerLink="/view-all-posts" routerLinkActive="Active">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-comments fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <p style="font-size: 25px" *ngIf="!isLoading && comments.length >= 0">
+                                            {{ comments.length }}
+                                        </p>
+                                        <i *ngIf="isLoading" class="fa fa-spinner fa-spin" style="font-size:25px"></i>
+                                        <div>Comments</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a routerLink="/post-comments" routerLinkActive="Active">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-user fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <p style="font-size: 25px" *ngIf="!isLoading && users.length >= 0">
+                                            {{ users.length }}
+                                        </p>
+                                        <i *ngIf="isLoading" class="fa fa-spinner fa-spin" style="font-size:25px"></i>
+                                        <div>Users</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a routerLink="/view-all-users" routerLinkActive="Active">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-list-alt fa-5x" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <p style="font-size: 25px" *ngIf="!isLoading && categories.length >= 0">
+                                            {{ categories.length }}
+                                        </p>
+                                        <i *ngIf="isLoading" class="fa fa-spinner fa-spin" style="font-size:25px"></i>
+                                        <div>Categories</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a routerLink="/category" routerLinkActive="Active">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <p style="font-size: 25px" *ngIf="!isLoading && reviews.length >= 0">
+                                            {{ reviews.length }}
+                                        </p>
+                                        <i *ngIf="isLoading" class="fa fa-spinner fa-spin" style="font-size:25px"></i>
+                                        <div>Reviews</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a routerLink="/view-all-reviews" routerLinkActive="Active">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-mobile fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <p style="font-size: 25px" *ngIf="!isLoading && contacts.length >= 0">
+                                            {{ contacts.length }}
+                                        </p>
+                                        <i *ngIf="isLoading" class="fa fa-spinner fa-spin" style="font-size:25px"></i>
+                                        <div>Contacts</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a routerLink="/contacts" routerLinkActive="Active">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="barChart">
+                            <canvas baseChart [datasets]="dataSet" 
+                            [chartType]="barChartType" 
+                            [labels]="barChartLabels" 
+                            [colors]="barChartColor"
+                            ></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+</div>
