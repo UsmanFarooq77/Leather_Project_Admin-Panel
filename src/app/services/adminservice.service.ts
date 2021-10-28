@@ -97,6 +97,6 @@ export class AdminserviceService {
     return this.db.object('/addReview/'+key)
   }
   deleteReview(reviewId){
-    this.db.object('/addReview/'+reviewId).remove();
+    return this.db.object('/addReview/'+reviewId).remove();
   }
 }

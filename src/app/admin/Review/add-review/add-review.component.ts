@@ -14,8 +14,6 @@ declare var $ : any;
 })
 export class AddReviewComponent implements OnInit {
   id: any;
-  HiddenUpdate: boolean;
-  Hidden: boolean;
   downloadUrl1: string;
   downloadUrl2: string;
   addReview: FormGroup;
@@ -23,6 +21,9 @@ export class AddReviewComponent implements OnInit {
   isLoadingImage1: boolean;
   isLoadingImage2: boolean;
   submitReview: string;
+  isAlertHide: boolean;
+  autoGenerateId: any;
+  isUpdateAlertHide: boolean;
 
   constructor(private adservice: AdminserviceService, 
     private fb: FormBuilder,
@@ -36,6 +37,8 @@ export class AddReviewComponent implements OnInit {
       this.submitReview = "Update";
       adservice.getReviewObject(this.id).take<Review>(1).subscribe((review) => this.review = review);
     }
+    this.isAlertHide = null;
+    this.isUpdateAlertHide = null;
    }
 
   ngOnInit(): void {
@@ -56,27 +59,37 @@ export class AddReviewComponent implements OnInit {
   addReviewForm(addreview: FormGroup, formD: FormGroupDirective) {
     if (this.id) {
       if (confirm("Are You Sure To Update Post?")) {
-        this.adservice.updateReview(this.id, addreview.value);
-        this.HiddenUpdate = true;
+        this.autoGenerateId = this.adservice.updateReview(this.id, addreview.value);
+        if (this.autoGenerateId) {
+          this.isUpdateAlertHide = true;
+        }
+        else {
+          this.isUpdateAlertHide = false;
+        }
         addreview.reset();
         formD.resetForm();
         this.submitReview = "Publish";
         this.scroll();
       }
       else {
-        this.HiddenUpdate = false;
+        this.isUpdateAlertHide = false;
       }
     }
     else {
       if (confirm("Are You Sure To Add Post?")) {
-        this.adservice.addReview(addreview.value);
-        this.Hidden = true;
+        this.autoGenerateId = this.adservice.addReview(addreview.value);
+        if (this.autoGenerateId) {
+          this.isAlertHide = true;
+        }
+        else {
+          this.isAlertHide = false;
+        }
         addreview.reset();
         formD.resetForm();
         this.scroll();
       }
       else {
-        this.Hidden = false;
+        this.isAlertHide = false;
       }
     }
   }
@@ -108,6 +121,12 @@ export class AddReviewComponent implements OnInit {
       this.downloadUrl2 = uploadSnapShot.downloadURL;
       this.isLoadingImage2 = false;
     })
+  }
+  closeAlert(): void {
+    this.isAlertHide = null;
+  }
+  closeUpdateAlert(): void {
+    this.isUpdateAlertHide = null;
   }
 
 }

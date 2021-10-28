@@ -10,15 +10,17 @@ import { ReversePipe } from 'ngx-pipes';
 })
 export class ContactComponent implements OnInit, OnDestroy {
   Contacts: { phone: string }[];
-  Hidden: boolean;
   Subcription: Subscription;
   contactFiltered: any[];
   pageNumber: number;
   isContactLoading: boolean;
+  isDeleteAlertHide: boolean;
+  autoGenerateId: any;
   constructor(private adservice: AdminserviceService, public reversePipe: ReversePipe) {
     this.pageNumber = 0;
     this.contactFiltered = [];
     this.isContactLoading = true;
+    this.isDeleteAlertHide = null;
   }
   ngOnInit() {
     this.Subcription = this.adservice.getContact().subscribe(contact => {
@@ -32,12 +34,20 @@ export class ContactComponent implements OnInit, OnDestroy {
   }
   deleteContact(key) {
     if (confirm("Are you sure to delete?")) {
-      this.adservice.deleteContact(key);
-      this.Hidden = true;
+      this.autoGenerateId = this.adservice.deleteContact(key);
+      if (this.autoGenerateId) {
+        this.isDeleteAlertHide = true;
+      }
+      else {
+        this.isDeleteAlertHide = false;
+      }
     }
     else {
-      this.Hidden = false;
+      this.isDeleteAlertHide = false;
     }
+  }
+  closeDeleteAlert(): void {
+    this.isDeleteAlertHide = null;
   }
   ngOnDestroy() {
     this.Subcription.unsubscribe();

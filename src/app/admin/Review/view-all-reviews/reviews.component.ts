@@ -19,6 +19,8 @@ export class ReviewsComponent implements OnInit {
   Hidden: boolean;
   Status: boolean;
   isReviewsLoading: boolean;
+  isDeleteAlertHide: boolean;
+  autoGenerateId: any;
 
   constructor(
     private adservice: AdminserviceService,
@@ -30,6 +32,7 @@ export class ReviewsComponent implements OnInit {
     this.searchText = ""
     this.isReviewsLoading = true;
     this.reviewsFiltered = [];
+    this.isDeleteAlertHide = null;
   }
   ngOnInit() {
     this.Subcription = this.adservice.getReviews().subscribe((review) => {
@@ -43,11 +46,16 @@ export class ReviewsComponent implements OnInit {
   }
   deleteReview(reviewId) {
     if (confirm("Are you sure to delete?")) {
-      this.adservice.deleteReview(reviewId);
-      this.Hidden = true;
+      this.autoGenerateId = this.adservice.deleteReview(reviewId);
+      if (this.autoGenerateId) {
+        this.isDeleteAlertHide = true;
+      }
+      else {
+        this.isDeleteAlertHide = false;
+      }
     }
     else {
-      this.Hidden = false;
+      this.isDeleteAlertHide = false;
     }
   }
   Approved(key, event: any) {
@@ -59,6 +67,9 @@ export class ReviewsComponent implements OnInit {
       this.Status = false;
       this.adservice.updatePostStatus(key, this.Status);
     }
+  }
+  closeDeleteAlert(): void {
+    this.isDeleteAlertHide = null;
   }
   ngOnDestroy() {
     this.Subcription.unsubscribe();

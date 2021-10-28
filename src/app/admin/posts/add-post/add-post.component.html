@@ -4,23 +4,23 @@
         <app-nav></app-nav>
         <div id="page-wrapper">
             <div class="container-fluid">
-                <div *ngIf="HiddenUpdate" class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                <div *ngIf="isUpdateAlertHide" class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeUpdateAlert()"><span
                             aria-hidden="true">&times;</span></button>
                     <strong>Well done!</strong> You Successfully Update This Post
                 </div>
-                <div *ngIf="HiddenUpdate==false" class="alert alert-danger alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                <div *ngIf="isUpdateAlertHide == false" class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeUpdateAlert()"><span
                             aria-hidden="true">&times;</span></button>
                     <strong>Attention!</strong> Your Post Is Not Updated
                 </div>
-                <div *ngIf="Hidden" class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                <div *ngIf="isAlertHide" class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()"><span
                             aria-hidden="true">&times;</span></button>
                     <strong>Well done!</strong> You Successfully Add This Post
                 </div>
-                <div *ngIf="Hidden==false" class="alert alert-danger alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                <div *ngIf="isAlertHide == false" class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()"><span
                             aria-hidden="true">&times;</span></button>
                     <strong>Attention!</strong> Your Post Is Not Add
                 </div>

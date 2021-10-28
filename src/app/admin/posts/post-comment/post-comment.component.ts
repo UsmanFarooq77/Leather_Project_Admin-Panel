@@ -9,39 +9,49 @@ import { ReversePipe } from 'ngx-pipes';
 })
 export class PostCommentComponent implements OnInit {
   Comment$;
-  Hidden: boolean;
-  Status: string="";
-  toggle:any;
+  Status: string = "";
+  toggle: any;
   pageNumber: number;
   searchText: string;
-  constructor(private adservice:AdminserviceService,public reversePipe: ReversePipe) {
-    this.Comment$=this.adservice.getComment();
+  isDeleteAlertHide: boolean;
+  autoGenerateId: any;
+  constructor(private adservice: AdminserviceService, public reversePipe: ReversePipe) {
+    this.Comment$ = this.adservice.getComment();
     this.pageNumber = 0;
     this.searchText = "";
-   }
-   deleteComment(key){
-    if(confirm("Are you sure to delete?")){
-      this.adservice.deleteComment(key);
-       this.Hidden=true;
+    this.isDeleteAlertHide = null;
+  }
+  deleteComment(key) {
+    if (confirm("Are you sure to delete?")) {
+      this.autoGenerateId = this.adservice.deleteComment(key);
+      if (this.autoGenerateId) {
+        this.isDeleteAlertHide = true;
       }
-      else{
-       this.Hidden=false;
+      else {
+        this.isDeleteAlertHide = false;
       }
-   }
-   Approved(key,status,event:any){
-    if(event.checked==true){ 
-      if(status=='unapproved'){
-       status="approved"
-       this.toggle=true;
-     this.adservice.updateComment(key,status,this.toggle);
+    }
+    else {
+      this.isDeleteAlertHide = false;
     }
   }
-     else{
-       status="unapproved";
-       this.toggle=false;
-       this.adservice.updateComment(key,status,this.toggle);
-     }
-   }
+  Approved(key, status, event: any) {
+    if (event.checked == true) {
+      if (status == 'unapproved') {
+        status = "approved"
+        this.toggle = true;
+        this.adservice.updateComment(key, status, this.toggle);
+      }
+    }
+    else {
+      status = "unapproved";
+      this.toggle = false;
+      this.adservice.updateComment(key, status, this.toggle);
+    }
+  }
+  closeDeleteAlert(): void {
+    this.isDeleteAlertHide = null;
+  }
   ngOnInit() {
   }
 }

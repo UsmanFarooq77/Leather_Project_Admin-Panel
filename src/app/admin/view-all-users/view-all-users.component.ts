@@ -14,10 +14,11 @@ export class ViewAllUsersComponent implements OnInit {
   id : any;
   filteredUser: any[];
   Subcription: Subscription;
-  Hidden: boolean;
   pageNumber: number;
   searchText: string;
   isUserLoading: boolean;
+  isDeleteAlertHide: boolean;
+  autoGenerateId: any;
   constructor(private adservice: AdminserviceService,
     private route: ActivatedRoute,
     public reversePipe: ReversePipe) {
@@ -26,6 +27,7 @@ export class ViewAllUsersComponent implements OnInit {
     this.searchText = "";
     this.filteredUser = [];
     this.isUserLoading = true;
+    this.isDeleteAlertHide = null;
   }
   ngOnInit() {
     this.Subcription = this.adservice.getUsers().subscribe(Users => {
@@ -39,12 +41,20 @@ export class ViewAllUsersComponent implements OnInit {
   }
   delete(key) {
     if (confirm("Are you sure to delete?")) {
-      this.adservice.deleteUser(key);
-      this.Hidden = true;
+      this.autoGenerateId = this.adservice.deleteUser(key);
+      if (this.autoGenerateId) {
+        this.isDeleteAlertHide = true;
+      }
+      else {
+        this.isDeleteAlertHide = false;
+      }
     }
     else {
-      this.Hidden = false;
+      this.isDeleteAlertHide = false;
     }
+  }
+  closeDeleteAlert(): void {
+    this.isDeleteAlertHide = null;
   }
   ngOnDestroy() {
     this.Subcription.unsubscribe();

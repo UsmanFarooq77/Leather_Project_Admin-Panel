@@ -4,23 +4,23 @@
         <!-- Navigation -->
         <div id="page-wrapper">
             <div class="container-fluid">
-                <div *ngIf="SubmitFeedback" class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                <div *ngIf="isAlertHide" class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()"><span
                             aria-hidden="true">&times;</span></button>
                     <strong>Well done!</strong> You Successfully submit This Category
                 </div>
-                <div *ngIf="SubmitFeedback==false" class="alert alert-danger alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                <div *ngIf="isAlertHide == false"  class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()"><span
                             aria-hidden="true">&times;</span></button>
                     <strong>Attention!</strong> Your Category Is Not Submit
                 </div>
-                <div *ngIf="Hidden" class="alert alert-info alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                <div *ngIf="isDeleteAlertHide" class="alert alert-info alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeDeleteAlert()"><span
                             aria-hidden="true">&times;</span></button>
                     <strong>Well done!</strong>You Successfully Delete This Category
                 </div>
-                <div *ngIf="Hidden==false" class="alert alert-warning alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                <div *ngIf="isDeleteAlertHide == false"  class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeDeleteAlert()"><span
                             aria-hidden="true">&times;</span></button>
                     <strong>Attention!</strong> Your Category Is Not Deleted
                 </div>

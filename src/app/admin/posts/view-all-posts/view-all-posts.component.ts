@@ -14,11 +14,12 @@ export class ViewAllPostsComponent implements OnInit {
   Posts: { $key: string }[];
   postsFiltered: any[];
   DelPost;
-  Hidden: boolean;
   Status: boolean;
   pageNumber: number;
   searchText: string;
   isPostsLoading: boolean;
+  isDeleteAlertHide: boolean;
+  autoGenerateId: any;
   constructor(
     private adservice: AdminserviceService,
     private route: ActivatedRoute,
@@ -28,6 +29,7 @@ export class ViewAllPostsComponent implements OnInit {
     this.searchText = "";
     this.postsFiltered = [];
     this.isPostsLoading = true;
+    this.isDeleteAlertHide = null;
   }
   ngOnInit() {
     this.Subcription = this.adservice.getPost().subscribe(posts => {
@@ -37,11 +39,16 @@ export class ViewAllPostsComponent implements OnInit {
   }
   deletePost(postId) {
     if (confirm("Are you sure to delete?")) {
-      this.adservice.delete(postId);
-      this.Hidden = true;
+      this.autoGenerateId = this.adservice.delete(postId);
+      if (this.autoGenerateId) {
+        this.isDeleteAlertHide = true;
+      }
+      else {
+        this.isDeleteAlertHide = false;
+      }
     }
     else {
-      this.Hidden = false;
+      this.isDeleteAlertHide = false;
     }
   }
   filtered(query: string) {
@@ -57,6 +64,9 @@ export class ViewAllPostsComponent implements OnInit {
       this.Status = false;
       this.adservice.updatePostStatus(key, this.Status);
     }
+  }
+  closeDeleteAlert(): void {
+    this.isDeleteAlertHide = null;
   }
   ngOnDestroy() {
     this.Subcription.unsubscribe();

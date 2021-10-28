@@ -39,8 +39,6 @@ export class AddPostComponent implements OnInit {
   post_category: string;
   post_phone_num: string;
   picker: Date = null;
-  Hidden: boolean;
-  HiddenUpdate: boolean;
   discountPrice: number;
   actualPrice: any;
   specialPrice: any;
@@ -49,6 +47,9 @@ export class AddPostComponent implements OnInit {
   isLoadingImage3: boolean;
   isLoadingImage4: boolean;
   postButton: string;
+  isAlertHide: boolean;
+  autoGenerateId: any;
+  isUpdateAlertHide: boolean;
   constructor(
     private adservice: AdminserviceService,
     route: ActivatedRoute,
@@ -67,6 +68,8 @@ export class AddPostComponent implements OnInit {
       this.postButton = "Update";
       adservice.getIdObject(this.id).take<Product>(1).subscribe(p => this.post = p)
     };
+    this.isAlertHide = null;
+    this.isUpdateAlertHide = null;
   }
   EMAIL_REGEXP = /^[^@]+@([^@\.]+\.)+[^@\.]+$/i;
   ngOnInit(): void {
@@ -105,27 +108,37 @@ export class AddPostComponent implements OnInit {
   AddPost(addpost: FormGroup, formD: FormGroupDirective) {
     if (this.id) {
       if (confirm("Are You Sure To Update Post?")) {
-        this.adservice.updatePost(this.id, addpost.value);
-        this.HiddenUpdate = true;
+        this.autoGenerateId = this.adservice.updatePost(this.id, addpost.value);
+        if (this.autoGenerateId) {
+          this.isUpdateAlertHide = true;
+        }
+        else {
+          this.isUpdateAlertHide = false;
+        }
         addpost.reset();
         formD.resetForm();
         this.postButton = "Add"
         this.scroll();
       }
       else {
-        this.HiddenUpdate = false;
+        this.isUpdateAlertHide = false;
       }
     }
     else {
       if (confirm("Are You Sure To Add Post?")) {
-        this.adservice.addPost(addpost.value);
-        this.Hidden = true;
+        this.autoGenerateId = this.adservice.addPost(addpost.value);
+        if (this.autoGenerateId) {
+          this.isAlertHide = true;
+        }
+        else {
+          this.isAlertHide = false;
+        }
         addpost.reset();
         formD.resetForm();
         this.scroll();
       }
       else {
-        this.Hidden = false;
+        this.isAlertHide = false;
       }
     }
   }
@@ -198,4 +211,10 @@ export class AddPostComponent implements OnInit {
   //     // console.log("change is", this.downloadUrl6);
   //   })
   // }
+  closeAlert(): void {
+    this.isAlertHide = null;
+  }
+  closeUpdateAlert(): void {
+    this.isUpdateAlertHide = null;
+  }
 }
