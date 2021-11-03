@@ -1,25 +1,30 @@
 .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-    display: grid;
-  }
-
-  .mat-card-title {
-    font-size: 22px;
-    font-weight: 600;
-   
-    
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  display: grid;
 }
 
-.mat-card{
-    font-family: 'Times New Roman', Times, serif;
-    
+.mat-card-title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.mat-card {
+  font-family: "Times New Roman", Times, serif;
 }
 
 .mat-form-field {
-    font-size: 19px;
-    font-weight: 400;
-    /* line-height: 1.125; */
-    font-family: 'Times New Roman', Times, serif;
+  font-size: 19px;
+  font-weight: 400;
+  /* line-height: 1.125; */
+  font-family: "Times New Roman", Times, serif;
 }
+
+@media (max-width: 599px) {
+    .mat-toolbar-row,
+    .mat-toolbar-single-row {
+      height: 56px;
+      margin-top: 12px !important;
+    }
+  }

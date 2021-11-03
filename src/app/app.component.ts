@@ -77,4 +77,10 @@ export class AppComponent implements OnInit {
     this.isAdmin = false;
     this.authService.logout();
   }
+  initializePopUp(){
+    $(document).ready(function () {
+      $('#exampleModalCenter').modal('show');
+    });
+    alert('Please enter Email and Password.');
+  }
 }

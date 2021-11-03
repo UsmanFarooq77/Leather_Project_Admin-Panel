@@ -12,3 +12,9 @@
   border: 1px solid lightgray;
   height: 65px;
 }
+
+@media (max-width:767px) {
+  .search_section{
+    margin-top: 10px;
+  }
+}

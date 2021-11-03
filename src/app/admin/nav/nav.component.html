@@ -12,7 +12,7 @@
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
-            <!-- <li><a routerLink="/" routerLinkActive="Active">Home Site</a></li> -->
+            <!-- <li><a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Home Site</a></li> -->
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
                     <!-- <b class="caret"></b> -->
@@ -24,7 +24,7 @@
               </li> -->
                     <!-- <li class="divider"></li> -->
                     <li>
-                        <a routerLink="/" (click)="logout()" routerLinkActive="Active">
+                        <a routerLink="/" (click)="logout()" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
                             <button data-toggle="modal" data-target="#exampleModalCenter" mat-raised-button
                                 color="accent">
                                 <i style="margin-bottom: 3px;" class="fa fa-fw fa-power-off"></i>Log Out
@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li>
-                    <a routerLink="/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    <a routerLink="/dashboard" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li>
                     <a href="javascript:;" data-toggle="collapse" data-target="#Post_Dropdown"><i
@@ -46,19 +46,19 @@
                         <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="Post_Dropdown" class="collapse">
                         <li>
-                            <a routerLink="/view-all-posts" routerLinkActive="Active">View All Posts</a>
+                            <a routerLink="/view-all-posts" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">View All Posts</a>
                         </li>
                         <li>
-                            <a routerLink="/add-post">Add Posts</a>
+                            <a routerLink="/add-post" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Add Posts</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a routerLink="/category" routerLinkActive="Active"><i
+                    <a routerLink="/category" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"><i
                             class="glyphicon glyphicon-home color-blue"></i> Categories</a>
                 </li>
                 <li class="">
-                    <a routerLink="/post-comments" routerLinkActive="Active"><i class="glyphicon glyphicon-comment">
+                    <a routerLink="/post-comments" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"><i class="glyphicon glyphicon-comment">
                         </i>
                         Comments</a>
                 </li>
@@ -68,12 +68,12 @@
                         <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="demo" class="collapse">
                         <li>
-                            <a routerLink="/view-all-users" routerLinkActive="Active">View All Users</a>
+                            <a routerLink="/view-all-users" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">View All Users</a>
                         </li>
                     </ul>
                 </li>
                 <!-- <li>
-              <a routerLink="/profile" routerLinkActive="Active"><i class="fa fa-user"></i> Profile</a>
+              <a routerLink="/profile" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"><i class="fa fa-user"></i> Profile</a>
           </li> -->
                 <li>
                     <a href="javascript:;" data-toggle="collapse" data-target="#Review_Dropdown"><i
@@ -81,15 +81,15 @@
                         <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="Review_Dropdown" class="collapse">
                         <li>
-                            <a routerLink="/view-all-reviews" routerLinkActive="Active">View All Reviews</a>
+                            <a routerLink="/view-all-reviews" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">View All Reviews</a>
                         </li>
                         <li>
-                            <a routerLink="/add-review">Add Review</a>
+                            <a routerLink="/add-review" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Add Review</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a routerLink="/contacts" routerLinkActive="Active"><i class="fa fa-mobile fa-2x"></i> Clients
+                    <a routerLink="/contacts" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"><i class="fa fa-mobile fa-2x"></i> Clients
                         Contact</a>
                 </li>
             </ul>

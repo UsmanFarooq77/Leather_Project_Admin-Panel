@@ -42,11 +42,11 @@
                 <th style="width: 80px;">Actual Price</th>
                 <th style="width: 80px;">Post Special Price</th>
                 <th style="width: 90px;">Category</th>
-                <th style="width: 128px;">Phone #</th>
-                <th style="width: 145px;">CNIC</th>
-                <th style="width: 180px;">Address</th>
+                <th style="width: 128px;">Discount</th>
+                <th style="width: 145px;">SKU</th>
+                <!-- <th style="width: 180px;">Address</th> -->
                 <th style="width: 120px;">Date</th>
-                <th style="width: 230px;">Email</th>
+                <!-- <th style="width: 230px;">Email</th> -->
                 <th style="width: 70px;">Status</th>
                 <th style="width: 130px;">Image</th>
                 <!-- <th>Comments</th> -->
@@ -65,19 +65,19 @@
                 <td>{{post.actual_price}}</td>
                 <td>{{post.post_special_price}}</td>
                 <td>{{post.post_category}}</td>
-                <td>{{post.post_phone_num}}</td>
-                <td>{{post.post_cnic}}</td>
-                <td>{{post.post_address}}</td>
+                <td>{{post.post_discount}}</td>
+                <td>{{post.post_sku}}</td>
+                <!-- <td>{{post.post_address}}</td> -->
                 <td>{{post.picker}}</td>
-                <td>{{post.post_email}}</td>
+                <!-- <td>{{post.post_email}}</td> -->
                 <td style="padding: 25px 15px">
                   <mat-slide-toggle (change)="Approved(post.$key,$event)" checked="{{post.post_status}}">
                   </mat-slide-toggle>
                 </td>
-                <td><img [src]="post.image1" max-width="100px" height="70px"></td>
+                <td style="text-align: center;"><img [src]="post.image1" max-width="100px" height="70px"></td>
                 <td><textarea class="post_description">{{post.post_content}}</textarea></td>
                 <!-- <td><a type="button" class="btn btn-danger" [routerLink]="['/add-post' , post.$key]">Edit</a>
-    </td> -->
+          </td> -->
                 <td style="padding: 25px 15px"><a [routerLink]="['/add-post' , post.$key]">
                     <i style="color: green; cursor: pointer;" class="fa fa-pencil fa-2x"
                       aria-hidden="true">

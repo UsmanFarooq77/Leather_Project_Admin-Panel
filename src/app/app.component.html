@@ -46,14 +46,15 @@
               <a class="nav-link login_google" (click)="login()">Login With Google</a>
             </li> -->
           <div class="social_buttons">
-            <button style="margin: 28px; width: 207px; " [disabled]="isAdmin" mat-raised-button color="warn" (click)="socialLogin('google')">
+            <button style="margin: 28px; width: 207px; " mat-raised-button color="warn" (click)="socialLogin('google')" disabled>
               <!-- <span class="glyphicon glyphicon-log-out"></span> -->
              <img class="google_icon" src="../assets/images/google_icon.png"> Continue With Google
             </button>
          
-            <button  [disabled]="isAdmin" mat-raised-button color="primary" (click)="socialLogin('facebook')">
+            <button  mat-raised-button color="primary" (click)="socialLogin('facebook')" disabled>
              <img class="facebook_icon" src="../assets/images/facebook_icon.JPG"> Continue With Facebook
             </button>
+            <!-- When we used the google and facebook buttons then this disabled code will be used. [disabled]="isAdmin" -->
           </div>
         </div>
         <div class="modal-footer">
@@ -61,5 +62,11 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="router.url == '/'" class="main_login_section">
+    <button class="main_login_button_beside_pop_up" (click)="initializePopUp()">
+      Log In
+    </button>
   </div>
 </div>

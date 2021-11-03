@@ -4,7 +4,7 @@
     <app-nav></app-nav>
     <div id="page-wrapper">
       <div class="container-fluid">
-        <div class="container">
+        <!-- <div class="container"> -->
           <div class="row">
             <div class="mobile_size">
               <div class="col-md-4">
@@ -15,7 +15,7 @@
               </div>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
         <div *ngIf="isDeleteAlertHide" class="alert alert-info alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeDeleteAlert()"><span
               aria-hidden="true">&times;</span></button>
@@ -62,7 +62,7 @@
                 <td><img [src]="review.image1" max-width="100px" height="70px"></td>
                 <td><textarea class="user_description">{{review.user_content}}</textarea></td>
                 <!-- <td><a type="button" class="btn btn-danger" [routerLink]="['/add-review' , review.$key]">Edit</a>
-      </td> -->
+                </td> -->
                 <td style="padding: 25px 15px"><a [routerLink]="['/add-review' , review.$key]">
                     <i style="color: green; cursor: pointer;" class="fa fa-pencil fa-2x" aria-hidden="true">
                     </i></a>

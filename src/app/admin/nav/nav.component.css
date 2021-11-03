@@ -4,3 +4,6 @@
 .navbar-collapse {
   max-height: 395px !important;
 }
+.active-link{
+  color: #ffffff !important;
+}
