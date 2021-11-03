@@ -1,6 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="site-wrap">
   <router-outlet></router-outlet>
+  <div *ngIf="router.url == '/'" class="main_login_section">
+    <button class="main_login_button_beside_pop_up" (click)="initializePopUp()">
+      Log In
+    </button>
+  </div>
   <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
     Launch demo modal
   </button> -->
@@ -62,11 +67,5 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <div *ngIf="router.url == '/'" class="main_login_section">
-    <button class="main_login_button_beside_pop_up" (click)="initializePopUp()">
-      Log In
-    </button>
   </div>
 </div>
