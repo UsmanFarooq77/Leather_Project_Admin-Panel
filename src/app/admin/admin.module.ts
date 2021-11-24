@@ -24,6 +24,7 @@ import { ContactComponent } from './contact/contact.component';
 import { CategoryComponent } from './category/category.component';
 import { ReviewsComponent } from './Review/view-all-reviews/reviews.component';
 import { ChartsModule } from 'ng2-charts';
+import { ViewAllNewsletterComponent } from './view-all-newsletter/view-all-newsletter.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -47,6 +48,6 @@ import { ChartsModule } from 'ng2-charts';
     AddPostComponent, CommentsComponent, 
     ViewAllPostsComponent, PostCommentComponent, 
     ProfileComponent, ViewAllUsersComponent, ContactComponent, CategoryComponent, 
-    ReviewsComponent, AddReviewComponent]
+    ReviewsComponent, AddReviewComponent, ViewAllNewsletterComponent]
 })
 export class AdminModule { }

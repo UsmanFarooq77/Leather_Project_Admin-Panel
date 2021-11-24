@@ -1,3 +1,4 @@
+import { ViewAllNewsletterComponent } from './view-all-newsletter/view-all-newsletter.component';
 import { ReviewsComponent } from './Review/view-all-reviews/reviews.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'add-review', component: AddReviewComponent, canActivate: [GuardsGuard] },
   { path: 'add-review/:id', component: AddReviewComponent, canActivate: [GuardsGuard] },
   { path: 'view-all-reviews', component: ReviewsComponent, canActivate: [GuardsGuard] },
+  { path: 'newsletter', component: ViewAllNewsletterComponent, canActivate: [GuardsGuard] }
 ];
 
 @NgModule({

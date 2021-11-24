@@ -6,6 +6,13 @@
   background-color: transparent;
 }
 
+.view_all_review_image {
+  text-align: center;
+}
+.view_all_review_image img {
+  max-width: 100px;
+  height: 70px;
+}
 .user_description {
   overflow: auto;
   overflow-x: hidden;

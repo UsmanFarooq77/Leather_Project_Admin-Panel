@@ -11,7 +11,7 @@ import { ReversePipe } from 'ngx-pipes';
 })
 export class ViewAllUsersComponent implements OnInit {
   Users: { user_id: string }[];
-  id : any;
+  id: any;
   filteredUser: any[];
   Subcription: Subscription;
   pageNumber: number;

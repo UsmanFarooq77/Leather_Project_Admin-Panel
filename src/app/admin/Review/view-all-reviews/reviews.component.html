@@ -59,7 +59,7 @@
                   <mat-slide-toggle (change)="Approved(review.$key,$event)" checked="{{review.review_status}}">
                   </mat-slide-toggle>
                 </td>
-                <td><img [src]="review.image1" max-width="100px" height="70px"></td>
+                <td class="view_all_review_image"><img [src]="review.image1"></td>
                 <td><textarea class="user_description">{{review.user_content}}</textarea></td>
                 <!-- <td><a type="button" class="btn btn-danger" [routerLink]="['/add-review' , review.$key]">Edit</a>
                 </td> -->
