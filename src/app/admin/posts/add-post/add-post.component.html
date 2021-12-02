@@ -109,7 +109,7 @@
                             </mat-error>
                             </mat-form-field> -->
                     <div style="display: block; margin: 15px">
-                        <button mat-fab style="width: 75px" type="button" (click)="image1.click()">Image 1
+                        <button mat-fab class="image_button" type="button" (click)="image1.click()">Image 1
                             <span *ngIf="!isLoadingImage1" style="color: black; font-size: 24px">*</span>
                             <span *ngIf="isLoadingImage1" class="fa fa-spinner fa-spin" style="font-size:20px"></span>
                         </button>
@@ -118,7 +118,7 @@
                         <div style="display: none">
                             <input type="url" formControlName="image1" [(ngModel)]="downloadUrl1 || post.image1">
                         </div>
-                        <button mat-fab style="width: 75px" type="button" (click)="image2.click()">Image 2
+                        <button mat-fab class="image_button" type="button" (click)="image2.click()">Image 2
                             <span *ngIf="!isLoadingImage2" style="color: black; font-size: 24px">*</span>
                             <span *ngIf="isLoadingImage2" class="fa fa-spinner fa-spin" style="font-size:20px"></span>
                         </button>
@@ -128,7 +128,7 @@
                         <div style="display: none">
                             <input type="url" formControlName="image2" [(ngModel)]="downloadUrl2 || post.image2">
                         </div>
-                        <button mat-fab style="width: 75px" type="button" (click)="image3.click()">Image 3
+                        <button mat-fab class="image_button" type="button" (click)="image3.click()">Image 3
                             <span *ngIf="!isLoadingImage3" style="color: black; font-size: 24px">*</span>
                             <span *ngIf="isLoadingImage3" class="fa fa-spinner fa-spin" style="font-size:20px"></span>
                         </button>
@@ -138,12 +138,12 @@
                         <div style="display: none">
                             <input type="url" formControlName="image3" [(ngModel)]="downloadUrl3 || post.image3">
                         </div>
-                        <!-- <button mat-fab style="width: 75px" type="button" (click)="image3.click()">Image 3</button>  
+                        <!-- <button mat-fab class="image_button" type="button" (click)="image3.click()">Image 3</button>  
                                 <input style="display: none" #image3 type="file" placeholder="Image" (change)="fun($event, 'file' )" required >
                                 <div style="display: none">
                                 <input type="url" formControlName="image3" [ngModel]="downloadUrl4" > 
                                 </div> -->
-                        <button mat-fab style="width: 75px" type="button" (click)="image4.click()">Image 4
+                        <button mat-fab class="image_button" type="button" (click)="image4.click()">Image 4
                             <span *ngIf="!isLoadingImage4" style="color: black; font-size: 24px">*</span>
                             <span *ngIf="isLoadingImage4" class="fa fa-spinner fa-spin" style="font-size:20px"></span>
                         </button>
@@ -152,7 +152,7 @@
                         <div style="display: none">
                             <input type="url" formControlName="image4" [(ngModel)]="downloadUrl4 || post.image4">
                         </div>
-                        <!-- <button mat-fab style="width: 75px" type="button" (click)="image5.click()">Image 5 
+                        <!-- <button mat-fab class="image_button" type="button" (click)="image5.click()">Image 5 
                                     <span style="color: black; font-size: 24px">*</span>
                                 </button>
                                 <input style="display: none" #image5 type="file" placeholder="Image"
@@ -161,7 +161,7 @@
                                     <input type="url" formControlName="image5"
                                         [(ngModel)]="downloadUrl5 || post.image5">
                                 </div> -->
-                        <!-- <button mat-fab style="width: 75px" type="button" (click)="image6.click()">Image 6 
+                        <!-- <button mat-fab class="image_button" type="button" (click)="image6.click()">Image 6 
                                     <span style="color: black; font-size: 24px">*</span>
                                     </button>
                                 <input style="display: none" #image6 type="file" placeholder="Image"

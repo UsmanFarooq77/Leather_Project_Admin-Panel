@@ -21,10 +21,24 @@
   font-family: "Times New Roman", Times, serif;
 }
 
+.image_button {
+  width: 70px;
+  height: 65px;
+  line-height: 65px;
+  text-align: center;
+  font-weight: 600;
+}
+.image_button span {
+  color: black;
+  font-size: 24px;
+  position: absolute;
+  top: 8px;
+  left: 30px;
+}
 @media (max-width: 599px) {
-    .mat-toolbar-row,
-    .mat-toolbar-single-row {
-      height: 56px;
-      margin-top: 12px !important;
-    }
+  .mat-toolbar-row,
+  .mat-toolbar-single-row {
+    height: 56px;
+    margin-top: 12px !important;
   }
+}

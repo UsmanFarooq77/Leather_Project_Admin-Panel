@@ -27,49 +27,48 @@
         <mat-toolbar>
           <h2>Add Review</h2>
         </mat-toolbar>
-            <form class="example-form" [formGroup]="addReview" (ngSubmit)="addReviewForm(addReview,formD)" #formD="ngForm">
-              <!-- ReviewTitle: -->
-              <mat-form-field class="example-full-width"><span
-                  style="color: red; float: right; margin-bottom: -25px;">*</span>
-                <input matInput placeholder="Full Name" formControlName="user_name" [(ngModel)]="review.user_name">
-                <mat-error>
-                  <span *ngIf="addReview.get('user_name').invalid && addReview.get('user_name').touched">Must
-                    Fill</span>
-                </mat-error>
-              </mat-form-field>
-              <br>
-              <!-- ReviewTag: -->
-              <mat-form-field class="example-full-width"><span
-                  style="color: red; float: right; margin-bottom: -25px;">*</span>
-                <input matInput placeholder="City" formControlName="user_city" [(ngModel)]="review.user_city">
-                <mat-error>
-                  <span *ngIf="addReview.get('user_city').invalid && addReview.get('user_city').touched">Must
-                    Fill</span>
-                </mat-error>
-              </mat-form-field>
-              <br>
-              <mat-form-field class="example-full-width"><span
-                  style="color: red; float: right; margin-bottom: -25px;">*</span>
-                <input matInput placeholder="Phone #" formControlName="user_phone_num"
-                  [(ngModel)]="review.user_phone_num">
-                <mat-error>
-                  <span *ngIf="addReview.get('user_phone_num').invalid && addReview.get('user_phone_num').touched">Must
-                    Fill</span>
-                </mat-error>
-              </mat-form-field>
-              <br>
-              <mat-form-field class="example-full-width"><span
-                  style="color: red; float: right; margin-bottom: -25px;">*</span>
-                <input matInput placeholder="Address" formControlName="user_address" [(ngModel)]="review.user_address">
-                <mat-error>
-                  <span *ngIf="addReview.get('user_address').invalid && addReview.get('user_address').touched">Must
-                    Fill</span>
-                </mat-error>
-              </mat-form-field>
-              <br>
+        <form class="example-form" [formGroup]="addReview" (ngSubmit)="addReviewForm(addReview,formD)" #formD="ngForm">
+          <!-- ReviewTitle: -->
+          <mat-form-field class="example-full-width"><span
+              style="color: red; float: right; margin-bottom: -25px;">*</span>
+            <input matInput placeholder="Full Name" formControlName="user_name" [(ngModel)]="review.user_name">
+            <mat-error>
+              <span *ngIf="addReview.get('user_name').invalid && addReview.get('user_name').touched">Must
+                Fill</span>
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <!-- ReviewTag: -->
+          <mat-form-field class="example-full-width"><span
+              style="color: red; float: right; margin-bottom: -25px;">*</span>
+            <input matInput placeholder="City" formControlName="user_city" [(ngModel)]="review.user_city">
+            <mat-error>
+              <span *ngIf="addReview.get('user_city').invalid && addReview.get('user_city').touched">Must
+                Fill</span>
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width"><span
+              style="color: red; float: right; margin-bottom: -25px;">*</span>
+            <input matInput placeholder="Phone #" formControlName="user_phone_num" [(ngModel)]="review.user_phone_num">
+            <mat-error>
+              <span *ngIf="addReview.get('user_phone_num').invalid && addReview.get('user_phone_num').touched">Must
+                Fill</span>
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width"><span
+              style="color: red; float: right; margin-bottom: -25px;">*</span>
+            <input matInput placeholder="Address" formControlName="user_address" [(ngModel)]="review.user_address">
+            <mat-error>
+              <span *ngIf="addReview.get('user_address').invalid && addReview.get('user_address').touched">Must
+                Fill</span>
+            </mat-error>
+          </mat-form-field>
+          <br>
 
-              <!-- Choose one: -->
-              <!-- <mat-form-field><span style="color: red; float: right; margin-bottom: -25px;">*</span>
+          <!-- Choose one: -->
+          <!-- <mat-form-field><span style="color: red; float: right; margin-bottom: -25px;">*</span>
                               <mat-select placeholder="ReviewCategory" formControlName="Review_category"
                                   [(ngModel)]="Review.Review_category">
                                   <mat-option *ngFor="let c of categories$ | async" [value]="c.name">
@@ -84,55 +83,54 @@
                               </mat-error>
                           </mat-form-field> -->
 
-              <!-- <br> -->
-              <div style="display: inline-block; margin-bottom: 15px">
-                <button mat-fab style="width: 75px" type="button" (click)="image1.click()">Image 1
-                  <span *ngIf="!isLoadingImage1" style="color: black; font-size: 24px">*</span>
-                  <span *ngIf="isLoadingImage1" class="fa fa-spinner fa-spin" style="font-size:20px"></span>
-              </button>
-                <input style="display: none" #image1 type="file" placeholder="Image" (change)="imageOne($event, 'file' )"
-                  required>
-                <div style="display: none">
-                  <input type="url" formControlName="image1" [(ngModel)]="downloadUrl1 || review.image1">
-                </div>
-                <button mat-fab style="width: 75px" type="button" (click)="image2.click()">Image 2
-                  <span *ngIf="!isLoadingImage2" style="color: black; font-size: 24px">*</span>
-                  <span *ngIf="isLoadingImage2" class="fa fa-spinner fa-spin" style="font-size:20px"></span>
-              </button>
-                <input style="display: none" #image2 type="file" placeholder="Image" (change)="imageTwo($event, 'file' )"
-                  required>
-                <div style="display: none">
-                  <input type="url" formControlName="image2" [(ngModel)]="downloadUrl2 || review.image2">
-                </div>
-              </div>
+          <!-- <br> -->
+          <div style="display: inline-block; margin-bottom: 15px">
+            <button mat-fab class="image_button" type="button" (click)="image1.click()">Image 1
+              <span *ngIf="!isLoadingImage1" style="color: black; font-size: 24px">*</span>
+              <span *ngIf="isLoadingImage1" class="fa fa-spinner fa-spin" style="font-size:20px"></span>
+            </button>
+            <input style="display: none" #image1 type="file" placeholder="Image" (change)="imageOne($event, 'file' )"
+              required>
+            <div style="display: none">
+              <input type="url" formControlName="image1" [(ngModel)]="downloadUrl1 || review.image1">
+            </div>
+            <button mat-fab class="image_button" type="button" (click)="image2.click()">Image 2
+              <span *ngIf="!isLoadingImage2" style="color: black; font-size: 24px">*</span>
+              <span *ngIf="isLoadingImage2" class="fa fa-spinner fa-spin" style="font-size:20px"></span>
+            </button>
+            <input style="display: none" #image2 type="file" placeholder="Image" (change)="imageTwo($event, 'file' )"
+              required>
+            <div style="display: none">
+              <input type="url" formControlName="image2" [(ngModel)]="downloadUrl2 || review.image2">
+            </div>
+          </div>
 
-              <mat-form-field><span style="color: red; float: right; margin-bottom: -25px;">*</span>
-                <input matInput type="date" placeholder="Choose a date" formControlName="date"
-                  [(ngModel)]="review.date">
-                <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-form-field><span style="color: red; float: right; margin-bottom: -25px;">*</span>
+            <input matInput type="date" placeholder="Choose a date" formControlName="date" [(ngModel)]="review.date">
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker> -->
-              </mat-form-field>
+          </mat-form-field>
 
-              <div class="form-group" style="display: none">
-                <label for="Author">Review_status</label>
-                <input type="text" formControlName="user_status" class="form-control" ngModel="false">
-              </div>
+          <div class="form-group" style="display: none">
+            <label for="Author">Review_status</label>
+            <input type="text" formControlName="user_status" class="form-control" ngModel="false">
+          </div>
 
-              <div><span style="color: red; float: right; margin-bottom: -18px;">*</span>
-                <!-- <label for="Review_content">Review Content:</label> -->
-                <textarea id="mytextarea" class="form-control" formControlName="user_content" cols="30" rows="10"
-                  placeholder="Describe Your futher description here...," [(ngModel)]="review.user_content">
+          <div><span style="color: red; float: right; margin-bottom: -18px;">*</span>
+            <!-- <label for="Review_content">Review Content:</label> -->
+            <textarea id="mytextarea" class="form-control" formControlName="user_content" cols="30" rows="10"
+              placeholder="Describe Your futher description here...," [(ngModel)]="review.user_content">
                               </textarea>
 
-              </div>
+          </div>
 
-              <br>
-              <!-- <mat-form-field class="example-full-width"> -->
-              <button mat-raised-button color="primary" [disabled]="addReview.invalid">Publish Review</button>
-              <br>
-              <button mat-raised-button color="accent" type="reset">Reset</button>
-              <!-- </mat-form-field> -->
-            </form>
+          <br>
+          <!-- <mat-form-field class="example-full-width"> -->
+          <button mat-raised-button color="primary" [disabled]="addReview.invalid">Publish Review</button>
+          <br>
+          <button mat-raised-button color="accent" type="reset">Reset</button>
+          <!-- </mat-form-field> -->
+        </form>
         <!-- /.container-fluid -->
       </div>
       <!-- /#page-wrapper -->

@@ -5,6 +5,14 @@
     border: 1px solid transparent;
     border-radius: 0.25rem;
 }
+.table thead > tr > th {
+    vertical-align: middle !important;
+    text-align: center;
+  }
+.table tbody > tr > td{
+    vertical-align: middle !important;
+    text-align: center;
+  }
 @media (max-width:767px) {
     .label_mobile_size{
         margin-top: 7px;

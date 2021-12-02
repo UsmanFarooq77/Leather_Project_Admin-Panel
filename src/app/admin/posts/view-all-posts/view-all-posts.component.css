@@ -5,6 +5,14 @@
   margin-bottom: 1rem;
   background-color: transparent;
 }
+.table thead > tr > th {
+  vertical-align: middle !important;
+  text-align: center;
+}
+.table tbody > tr > td{
+  vertical-align: middle !important;
+  text-align: center;
+}
 
 .post_description{
   overflow: auto; 

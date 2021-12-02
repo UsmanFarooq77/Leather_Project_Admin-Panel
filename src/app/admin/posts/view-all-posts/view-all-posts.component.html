@@ -62,7 +62,7 @@
           | paginate:{itemsPerPage:5, currentPage: pageNumber}; let i = index">
                 <td>{{post.$key}}</td>
                 <td>{{post.post_title}}</td>
-                <td>{{post.actual_price}}</td>
+                <td>{{post.post_actual_price}}</td>
                 <td>{{post.post_special_price}}</td>
                 <td>{{post.post_category}}</td>
                 <td>{{post.post_discount}}</td>
@@ -78,14 +78,25 @@
                 <td><textarea class="post_description">{{post.post_content}}</textarea></td>
                 <!-- <td><a type="button" class="btn btn-danger" [routerLink]="['/add-post' , post.$key]">Edit</a>
           </td> -->
-                <td style="padding: 25px 15px"><a [routerLink]="['/add-post' , post.$key]">
+                
+                <td>
+                  <!-- <div> -->
+                  <a [routerLink]="['/add-post' , post.$key]">
+                  
                     <i style="color: green; cursor: pointer;" class="fa fa-pencil fa-2x"
                       aria-hidden="true">
                     </i></a>
+                  <!-- </div> -->
                 </td>
-                <td style="text-align: center; padding-top: 29px;"> <i style="color: red; cursor: pointer" class="fa fa-trash fa-2x"
+               
+                
+                <td>
+                  <!-- <div> -->
+                  <i style="color: red; cursor: pointer" class="fa fa-trash fa-2x"
                     (click)="deletePost(post.$key)"></i>
+                    <!-- </div> -->
                 </td>
+                
               </tr>
             </tbody>
           </table>

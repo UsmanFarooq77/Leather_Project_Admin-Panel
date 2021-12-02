@@ -55,7 +55,7 @@
                 <td>{{review.user_address}}</td>
                 <td>{{review.user_phone_num}}</td>
                 <td>{{review.date}}</td>
-                <td style="padding: 25px 15px">
+                <td>
                   <mat-slide-toggle (change)="Approved(review.$key,$event)" checked="{{review.review_status}}">
                   </mat-slide-toggle>
                 </td>
@@ -63,11 +63,11 @@
                 <td><textarea class="user_description">{{review.user_content}}</textarea></td>
                 <!-- <td><a type="button" class="btn btn-danger" [routerLink]="['/add-review' , review.$key]">Edit</a>
                 </td> -->
-                <td style="padding: 25px 15px"><a [routerLink]="['/add-review' , review.$key]">
+                <td><a [routerLink]="['/add-review' , review.$key]">
                     <i style="color: green; cursor: pointer;" class="fa fa-pencil fa-2x" aria-hidden="true">
                     </i></a>
                 </td>
-                <td style="text-align: center; padding-top: 29px;"> <i style="color: red; cursor: pointer"
+                <td> <i style="color: red; cursor: pointer"
                     class="fa fa-trash fa-2x" (click)="deleteReview(review.$key)"></i>
                 </td>
               </tr>
