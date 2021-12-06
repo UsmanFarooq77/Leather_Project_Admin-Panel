@@ -38,22 +38,22 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
+                        <div class="panel panel-red">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-comments fa-5x"></i>
+                                        <i class="fa fa-list-alt fa-5x" aria-hidden="true"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <p style="font-size: 25px" *ngIf="!isLoading && comments.length >= 0">
-                                            {{ comments.length }}
+                                        <p style="font-size: 25px" *ngIf="!isLoading && categories.length >= 0">
+                                            {{ categories.length }}
                                         </p>
                                         <i *ngIf="isLoading" class="fa fa-spinner fa-spin" style="font-size:25px"></i>
-                                        <div>Comments</div>
+                                        <div>Categories</div>
                                     </div>
                                 </div>
                             </div>
-                            <a routerLink="/post-comments" routerLinkActive="Active">
+                            <a routerLink="/category" routerLinkActive="Active">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -88,22 +88,22 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
+                        <div class="panel panel-green">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-list-alt fa-5x" aria-hidden="true"></i>
+                                        <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <p style="font-size: 25px" *ngIf="!isLoading && categories.length >= 0">
-                                            {{ categories.length }}
+                                        <p style="font-size: 25px" *ngIf="!isLoading && comments.length >= 0">
+                                            {{ comments.length }}
                                         </p>
                                         <i *ngIf="isLoading" class="fa fa-spinner fa-spin" style="font-size:25px"></i>
-                                        <div>Categories</div>
+                                        <div>Comments</div>
                                     </div>
                                 </div>
                             </div>
-                            <a routerLink="/category" routerLinkActive="Active">
+                            <a routerLink="/post-comments" routerLinkActive="Active">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -112,31 +112,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-star fa-5x" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <p style="font-size: 25px" *ngIf="!isLoading && reviews.length >= 0">
-                                            {{ reviews.length }}
-                                        </p>
-                                        <i *ngIf="isLoading" class="fa fa-spinner fa-spin" style="font-size:25px"></i>
-                                        <div>Reviews</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a routerLink="/view-all-reviews" routerLinkActive="Active">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-info">
                             <div class="panel-heading">
@@ -162,15 +138,63 @@
                             </a>
                         </div>
                     </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <p style="font-size: 25px" *ngIf="!isLoading && reviews.length >= 0">
+                                            {{ reviews.length }}
+                                        </p>
+                                        <i *ngIf="isLoading" class="fa fa-spinner fa-spin" style="font-size:25px"></i>
+                                        <div>Reviews</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="reviews_footer_panel" routerLink="/view-all-reviews" routerLinkActive="Active">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-envelope fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <p style="font-size: 25px" *ngIf="!isLoading && newsLetter.length >= 0">
+                                            {{ newsLetter.length }}
+                                        </p>
+                                        <i *ngIf="isLoading" class="fa fa-spinner fa-spin" style="font-size:25px"></i>
+                                        <div>Newsletter</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="newsletter_footer_panel" routerLink="/newsletter" routerLinkActive="Active">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="barChart">
-                            <canvas baseChart [datasets]="dataSet" 
-                            [chartType]="barChartType" 
-                            [labels]="barChartLabels" 
-                            [colors]="barChartColor"
-                            ></canvas>
+                            <canvas baseChart [datasets]="dataSet" [chartType]="barChartType" [labels]="barChartLabels"
+                                [colors]="barChartColor" [options]="barChartOptions"></canvas>
                         </div>
                     </div>
                 </div>

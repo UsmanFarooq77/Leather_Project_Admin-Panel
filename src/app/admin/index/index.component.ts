@@ -5,6 +5,7 @@ import { Review } from '../../interfaces/review';
 import { AdminserviceService } from '../../services/adminservice.service';
 import { Color } from 'ng2-charts';
 import * as chartDataLabels from 'chartjs-plugin-datalabels'
+import { newsletter } from '../../interfaces/newsletter';
 @Component({
 	selector: 'app-index',
 	templateUrl: './index.component.html',
@@ -24,7 +25,9 @@ export class IndexComponent implements OnInit {
 	barChartType: string;
 	barChartLegend: boolean;
 	barChartColor: Color[];
-	public barChartPlugins = [chartDataLabels]
+	public barChartPlugins = [chartDataLabels];
+	newsLetter: newsletter[];
+
 	constructor(private adService: AdminserviceService) {
 		this.posts = [];
 		this.comments = [];
@@ -32,37 +35,52 @@ export class IndexComponent implements OnInit {
 		this.categories = [];
 		this.contacts = [];
 		this.reviews = [];
+		this.newsLetter = [];
 		this.isLoading = true;
-		this.barChartLabels = ['Posts', 'Comments', 'Users', 'Categories', 'Reviews', 'Contacts'];
+		this.barChartLabels = ['Posts', 'Categories', 'Users', 'Comments', 'Contacts', 'Reviews', 'Newsletters'];
 		this.barChartType = 'bar',
 			this.dataSet = [
 				{
-					data: [0, 0, 0, 0, 0, 0], label: 'Today Statistics'
+					data: [0, 0, 0, 0, 0, 0, 0], label: 'Today Statistics'
 				}
 			];
 		this.barChartColor = [
 			{
 				borderColor:
 					[
+						'rgb(54, 162, 235)',
 						'rgb(255, 99, 132)',
 						'rgb(255, 159, 64)',
-						'rgb(75, 192, 192)',
+						'rgb(2, 117, 2)',
 						'rgb(54, 162, 235)',
-						'rgb(153, 102, 255)',
-						'rgb(201, 203, 207)'
+						'rgb(105, 231, 105)',
+						'rgb(128, 128, 128)'
 					],
 				backgroundColor:
 					[
+						'rgba(54, 162, 235, 0.2)',
 						'rgba(255, 99, 132, 0.2)',
 						'rgba(255, 205, 86, 0.2)',
-						'rgba(75, 192, 192, 0.2)',
-						'rgba(54, 162, 235, 0.2)',
-						'rgba(153, 102, 255, 0.2)',
-						'rgba(201, 203, 207, 0.2)',
+						'rgba(91, 180, 91, 0.2)',
+						'rgba(173, 216, 230, 0.2)',
+						'rgba(144, 238, 144, 0.2)',
+						'rgba(211, 211, 211, 0.2)'
 					],
 				borderWidth: 1
 			},
 		];
+		this.barChartOptions = {
+			responsive: true,
+			scales: {
+				yAxes: [
+					{
+						ticks: {
+							beginAtZero: true
+						}
+					}
+				]
+			}
+		}
 		// this.barChartLegend = true;
 		// this.barChartOptions = {
 		// 	scaleShowVerticalLines: false,
@@ -107,6 +125,11 @@ export class IndexComponent implements OnInit {
 		this.adService.getReviews().subscribe((reviews) => {
 			if (reviews) {
 				this.reviews = reviews;
+			}
+		});
+		this.adService.getNewsLetter().subscribe((newsletter) => {
+			if (newsletter) {
+				this.newsLetter = newsletter;
 				this.barChart();
 			}
 		});
@@ -114,8 +137,8 @@ export class IndexComponent implements OnInit {
 	barChart() {
 		this.dataSet = [
 			{
-				data: [this.posts.length, this.comments.length, this.users.length
-					, this.categories.length, this.reviews.length, this.contacts.length], label: 'Today Statistics'
+				data: [this.posts.length, this.categories.length, this.users.length, this.comments.length,
+				this.contacts.length, this.reviews.length, this.newsLetter.length], label: 'Today Statistics'
 			}
 		];
 	}

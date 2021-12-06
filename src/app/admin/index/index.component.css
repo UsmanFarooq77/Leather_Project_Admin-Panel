@@ -3,8 +3,15 @@
     margin: 12px 0 20px !important;
     border-bottom: 1px solid #eee;
 }
+.reviews_footer_panel {
+    color: #3c763d;
+}
+.newsletter_footer_panel {
+    color: #333;
+}
 .barChart{
     width: 100%;
     border: 1px solid #eee;
     padding: 5px;
+    color: rgb(211, 211, 211);
 }

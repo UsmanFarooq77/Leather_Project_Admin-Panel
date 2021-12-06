@@ -61,11 +61,9 @@ export class ReviewsComponent implements OnInit {
   Approved(key, event: any) {
     if (event.checked == true) {
       this.Status = true;
-      this.adservice.updatePostStatus(key, this.Status);
     }
     else {
       this.Status = false;
-      this.adservice.updatePostStatus(key, this.Status);
     }
   }
   closeDeleteAlert(): void {
